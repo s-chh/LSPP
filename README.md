@@ -5,7 +5,7 @@ This is the official PyTorch Implementation of our upcoming BMVC 2024 PatchRot p
  <br>
 
 ## Run command:
-Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LSPP:<br>
+Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
 ```
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
