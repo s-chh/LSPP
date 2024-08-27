@@ -1,0 +1,20 @@
+{
+	"epochs":100,
+	"warmup":5,
+	"lr":0.1,
+	"lr_drop_epochs":[40, 60],
+	"lr_drop":0.1,
+	"momentum":0.9,
+	"batch_size":64,
+	"weight_decay":1e-4,
+	"image_size":64,
+	"hflip": true,
+	"randomresizecrop": false,
+	"padding": 4,	
+	"resizecrop": 0,
+	"n_channels":3,
+	"n_classes":200,
+	"cm": false,
+	"mean": [0.4802, 0.4481, 0.3975],
+	"std": [0.2302, 0.2265, 0.2262]
+}
