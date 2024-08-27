@@ -23,5 +23,5 @@ CIFAR10, CIFAR100, FashionMNIST, and SVHN datasets will be downloaded to the pat
 TinyImageNet, Animals10N, and ImageNet100 need to be downloaded, and the path needs to be provided using the "data_path" argument. 
 
 If you find this paper/code helpful, please cite our paper:
-'''
-'''
+```
+```
