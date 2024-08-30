@@ -1,7 +1,7 @@
 # Label Smoothing++ (LS++)
 This is the official PyTorch Implementation of our upcoming BMVC 2024 PatchRot paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
 
-## Introduction
+## Introduction: (To be fixed)
 Label Smoothing++ enables neural networks to learn separate targets for each individual class. It ensures that samples within the same class yield consistent outputs.
 select their optimal training labels. It uses different training labels for each class while ensuring that samples within the same class yield consistent outputs. The class-wise probability vector to add to the 1-hot vector of each class. The learned targets regularize the network and provide improved performance.
 designed to . Our approach uses
