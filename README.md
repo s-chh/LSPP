@@ -4,11 +4,7 @@ Official PyTorch Implementation of upcoming BMVC 2024 paper "Label Smoothing++: 
 ## Introduction: (To be fixed)
 Label Smoothing++ enables neural networks to learn separate targets for each individual class. It ensures that samples within the same class yield consistent outputs.
 select their optimal training labels. It uses different training labels for each class while ensuring that samples within the same class yield consistent outputs. The class-wise probability vector to add to the 1-hot vector of each class. The learned targets regularize the network and provide improved performance.
-designed to . Our approach uses
-different training labels for each class while ensuring that samples within the same class
-yield consistent outputs
-Label Smoothing++ enhances neural networks by allowing them to determine optimal training labels. Our method assigns unique training labels for each class while ensuring consistency within the same class. It adjusts the class-wise probability vector added to the one-hot vector of each class. These learned targets regularize the network, leading to improved performance.
-<br>
+designed to <br>
 
 ## Run command:
 Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
