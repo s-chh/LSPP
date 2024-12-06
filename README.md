@@ -9,39 +9,40 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
   - [Requirements](#requirements)
   - [Run Commands](#run-commands)
   - [Data](#data)
-  - [Quick PyTorch Code for Label Smoothing++][#quick-pytorch-code-for-label-smoothing++]
+  - [PyTorch Code for Label Smoothing++][#quick-pytorch-code-for-label-smoothing++]
 - [Results](#results)
 - [Cite](#cite)
 
 ## Introduction
 ### Overview
-- Label Smoothing++ allows the network to learn optimal probability assignment.
-- Each class learns a different probability assignment for all the non-target classes.
+- Label Smoothing++ (LS++) enhances label regularization by learning optimal probability assignments for non-target classes.
+- Instead of using fixed probabilities like traditional label smoothing, LS++ learns a C-Matrix where each class has a unique probability vector for non-target classes.
 - The target class probability is fixed but the non-target class probabilities are flexible.
-- Combined probability vectors form a C-Matrix by setting the diagonal (itself) to 0.
-  
+- Key benefits:
+    - Encourages more flexible learning.
+    - Improves network robustness and accuracy.
+
 ### Algorithm
-1. Initialize the C-Matrix with different learnable probability vectors for each class.
-2. For each sample, create its 1-hot vector of the target class.
-3. Get the associated probabilities vector from the C-Matrix.
-4. Combine the two probability vectors (from step 2 & 3) using a weighted sum (α is the weight).
-5. Train the network using cross-entropy loss only (using stop gradients).
-6. Train the C-Matrix using the reverse cross-entropy loss only (using stop gradients).
-7. Repeat 2-6
+1. **Initialize the C-Matrix** with different learnable probability vectors for each class.
+2. For each sample, create its **1-hot vector** of the target class.
+3. Use the **C-Matrix** to fetch the corresponding **probability vector** for non-target classes.
+4. **Combine** the 1-hot vector and the C-Matrix vector using a **weighted sum** controlled by a **hyperparameter** 𝛼 α.
+5. Optimize the network parameters with **cross-entropy loss**.
+6. Train the C-Matrix with the **reverse cross-entropy loss**.
+7. Repeat steps 2–6 until convergence.
 
 ## Usage
 ### Requirements
 Python, scikit-learn, PyTorch, and torchvision
  
 ### Run command:
-Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
+To train a model using Label Smoothing++ (LS++), use **lspp** as the **method** argument. For instance, to train AlexNet on CIFAR10:
 ```
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
 
-apply_wd argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix but the performance can drop.
+The `--apply_wd` argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix but the performance can drop.
 
-#### Data
 ### Data
 - To change the dataset, **replace CIFAR10** with the appropriate dataset. <br>
 - **CIFAR10**, **CIFAR100**, **FashionMNIST**, and **SVHN** are automatically downloaded by the script.
@@ -69,7 +70,7 @@ For manually downloaded datasets, use the `--data_path` argument to specify the 
 python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path /path/to/data
 ```
 
-#### Quick PyTorch Code for Label Smoothing++
+### Quick PyTorch Code for Label Smoothing++
 Alternatively, simple PyTorch code for quick integration with other frameworks:
 ```
 # Define LS++ Class
@@ -107,7 +108,7 @@ class LSPP(nn.Module):
 # Define loss function
 loss_fn = LSPP(K, α)
 
-# Add C-Matrix to the training parameters of optimizer
+# Add C-Matrix to the training parameters of the optimizer
 opt = SGD(list(net.parameters()) + list(loss_fn.parameters()), lr, mom, wd)
 .
 .
