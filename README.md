@@ -8,8 +8,8 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 - The target class probability is fixed but the non-target class probabilities are flexible.
 - Combined probability vectors form a C-Matrix by setting the diagonal (itself) to 0.
 - One-hot vector and associated probability vectors from the C-Matrix are combined using alpha.
-- Network is trained with using cross-entropy loss only (using stop gradients).
-- Learnable probability vectors from C-Matrix are trained using the reverse cross-entropy loss only (using stop gradients).
+- Network is trained using cross-entropy loss only (using stop gradients).
+- C-Matrix are trained using the reverse cross-entropy loss only (using stop gradients).
 
 ## Run command:
 Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
