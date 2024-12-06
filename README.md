@@ -31,20 +31,13 @@ Run <strong>main.py</strong> to train the network with <strong>LS++</strong> wit
 ```
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
-
-Replace cifar10 with the appropriate dataset and alexnet with the appropriate model. <br>
-Supported datasets: CIFAR10, CIFAR100, FashionMNIST, SVHN, TinyImageNet, Animals10N, and ImageNet100. <br><br>
-CIFAR10, CIFAR100, FashionMNIST, and SVHN datasets will be downloaded to the path specified in the "data_path" argument (default: "./data").<br>
-TinyImageNet, Animals10N, and ImageNet100 need to be downloaded, and the path needs to be provided using the "data_path" argument. 
-
-<br>
+#### Network 
 apply_wd argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix.
 
-### Data
-- To change the dataset, **replace cifar10** with the **appropriate dataset**. <br>
-- Cifar10, Cifar100, FashionMNIST, and SVHN will be auto-downloaded,
-	-  At the path specified in the "data_path" argument (default: "./data").
-- TinyImageNet, Animals10n, and Imagenet100 need to be downloaded.
+#### Data
+- To change the dataset, **replace cifar10** with the appropriate dataset. <br>
+- **Cifar10**, **Cifar100**, **FashionMNIST**, and **SVHN** will be auto-downloaded.
+- **TinyImageNet**, **Animals10n**, and **Imagenet100** need to be downloaded.
    - Data must be split into 'train' and 'test' folders. 
    - Path needs to be provided using the "data_path" argument.
 - Dataset links:
