@@ -1,10 +1,15 @@
 # Label Smoothing++ or LS++
 Official Implementation of paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
 
-## Introduction: (To be fixed)
-Label Smoothing++ enables neural networks to learn separate targets for each individual class. It ensures that samples within the same class yield consistent outputs.
-select their optimal training labels. It uses different training labels for each class while ensuring that samples within the same class yield consistent outputs. The class-wise probability vector to add to the 1-hot vector of each class. The learned targets regularize the network and provide improved performance.
-designed to <br>
+## Introduction
+### Overview
+- Label Smoothing++ allows the network to learn optimal probability assignment.
+- Each class learns a different probability assignment for all the non-target classes.
+- The target class probability is fixed but the non-target class probabilities are flexible.
+- Combined probability vectors form a C-Matrix by setting the diagonal (itself) to 0.
+- One-hot vector and associated probability vectors from the C-Matrix are combined using alpha.
+- Network is trained with using cross-entropy loss only (using stop gradients).
+- Learnable probability vectors from C-Matrix are trained using the reverse cross-entropy loss only (using stop gradients).
 
 ## Run command:
 Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
