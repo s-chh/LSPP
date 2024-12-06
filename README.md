@@ -2,7 +2,7 @@
 Official Implementation of paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
 
 ## Introduction
-1-line summary: Label regularization technique that learns the optimal probability assignment of non-target classes for each class.
+**1 Liner:** Label regularization technique that learns the optimal probability assignment of non-target classes for each class.
 
 ### Overview
 - Label Smoothing++ allows the network to learn optimal probability assignment.
