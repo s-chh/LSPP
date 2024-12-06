@@ -1,4 +1,4 @@
-# Label Smoothing++ (LS++)
+# Label Smoothing++ or LS++
 Official Implementation of paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
 
 ## Introduction: (To be fixed)
