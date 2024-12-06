@@ -45,8 +45,8 @@ apply_wd argument controls whether weight decay should be applied to the C-Matri
    - Animals10N: <a href="https://dm.kaist.ac.kr/datasets/animal-10n/">https://dm.kaist.ac.kr/datasets/animal-10n/</a>  
    - ImageNet100: <a href="https://www.kaggle.com/datasets/ambityga/imagenet100">https://www.kaggle.com/datasets/ambityga/imagenet100/</a>  
 
-#### Simple PyTorch Code for Label Smoothing++
-Alternatively, simple PyTorch code for integrating with other frameworks:
+#### Quick PyTorch Code for Label Smoothing++
+Alternatively, simple PyTorch code for quick integration with other frameworks:
 ```
 # Define LS++ Class
 class LSPP(nn.Module):
@@ -83,8 +83,12 @@ class LSPP(nn.Module):
 # Define loss function
 loss_fn = LSPP(K, α)
 
-# Add C-Matrix to the training parameters
+# Add C-Matrix to the training parameters of optimizer
 opt = SGD(list(net.parameters()) + list(loss_fn.parameters()), lr, mom, wd)
+.
+.
+# Calculate loss
+loss = loss_fn(logits, targets)
 ```
 
 ## Cite
