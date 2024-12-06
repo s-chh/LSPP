@@ -17,6 +17,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 4. Combine the two probability vectors using a weighted sum (α is the weight).
 5. Train the network using cross-entropy loss only (using stop gradients).
 6. Train the C-Matrix using the reverse cross-entropy loss only (using stop gradients).
+7. Repeat 2-6
 
 ## Run command:
 
