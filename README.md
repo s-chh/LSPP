@@ -1,9 +1,19 @@
 # Label Smoothing++ or LS++
 Official Implementation of paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
 
-## Introduction
-**1-line summary:** A label regularization method that learns the optimal training probabilities for non-target classes, tailored to each class.
+## Table of Contents
+- [Introduction](#introduction)
+  - [Overview](#overview)
+  - [Algorithm](#algorithm)
+- [Usage](#usage)
+  - [Requirements](#requirements)
+  - [Run Commands](#run-commands)
+  - [Data](#data)
+  - [Quick PyTorch Code for Label Smoothing++][#quick-pytorch-code-for-label-smoothing++]
+- [Results](#results)
+- [Cite](#cite)
 
+## Introduction
 ### Overview
 - Label Smoothing++ allows the network to learn optimal probability assignment.
 - Each class learns a different probability assignment for all the non-target classes.
@@ -14,36 +24,50 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 1. Initialize the C-Matrix with different learnable probability vectors for each class.
 2. For each sample, create its 1-hot vector of the target class.
 3. Get the associated probabilities vector from the C-Matrix.
-4. Combine the two probability vectors (2 & 3) using a weighted sum (α is the weight).
+4. Combine the two probability vectors (from step 2 & 3) using a weighted sum (α is the weight).
 5. Train the network using cross-entropy loss only (using stop gradients).
 6. Train the C-Matrix using the reverse cross-entropy loss only (using stop gradients).
 7. Repeat 2-6
 
 ## Usage
 ### Requirements
-- Python
-- scikit-learn
-- PyTorch
-- torchvision
+Python, scikit-learn, PyTorch, and torchvision
  
 ### Run command:
 Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
 ```
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
-#### Network 
-apply_wd argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix.
+
+apply_wd argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix but the performance can drop.
 
 #### Data
-- To change the dataset, **replace cifar10** with the appropriate dataset. <br>
-- **Cifar10**, **Cifar100**, **FashionMNIST**, and **SVHN** will be auto-downloaded.
-- **TinyImageNet**, **Animals10n**, and **Imagenet100** need to be downloaded.
-   - Data must be split into 'train' and 'test' folders. 
-   - Path needs to be provided using the "data_path" argument.
-- Dataset links:
-   - TinyImageNet: <a href="http://cs231n.stanford.edu/tiny-imagenet-200.zip">http://cs231n.stanford.edu/tiny-imagenet-200.zip</a> 
-   - Animals10N: <a href="https://dm.kaist.ac.kr/datasets/animal-10n/">https://dm.kaist.ac.kr/datasets/animal-10n/</a>  
-   - ImageNet100: <a href="https://www.kaggle.com/datasets/ambityga/imagenet100">https://www.kaggle.com/datasets/ambityga/imagenet100/</a>  
+### Data
+- To change the dataset, **replace CIFAR10** with the appropriate dataset. <br>
+- **CIFAR10**, **CIFAR100**, **FashionMNIST**, and **SVHN** are automatically downloaded by the script.
+- **TinyImageNet**, **Animals10n**, and **Imagenet100** need to be downloaded manually.
+#### Dataset Directory Structure
+For manually downloaded datasets, organize the data in the following directory structure:
+```
+data/
+├── train/
+│ ├── class1/
+│ ├── class2/
+├── test/
+│ ├── class1/
+│ ├── class2/
+```
+#### Dataset Links
+Here are the links to download the required datasets:
+- [TinyImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip)  
+- [Animals10N](https://dm.kaist.ac.kr/datasets/animal-10n/)  
+- [ImageNet100](https://www.kaggle.com/datasets/ambityga/imagenet100)  
+
+#### Specifying Dataset Paths
+For manually downloaded datasets, use the `--data_path` argument to specify the path to the dataset. Example:
+```bash
+python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path /path/to/data
+```
 
 #### Quick PyTorch Code for Label Smoothing++
 Alternatively, simple PyTorch code for quick integration with other frameworks:
