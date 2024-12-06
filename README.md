@@ -19,9 +19,14 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 6. Train the C-Matrix using the reverse cross-entropy loss only (using stop gradients).
 7. Repeat 2-6
 
-## Run command:
-
-Alternatively full framework can be used 
+## Usage
+### Requirements
+- Python
+- scikit-learn
+- PyTorch
+- torchvision
+ 
+### Run command:
 Run <strong>main.py</strong> to train the network with <strong>LS++</strong> with the method argument set to '<strong>lspp</strong>'. The dataset and model can be changed using the dataset and model arguments. Below is an example of training an Alexnet on CIFAR10 with LS++:<br>
 ```
 python main.py --dataset cifar10 --model alexnet --method lspp
@@ -35,7 +40,18 @@ TinyImageNet, Animals10N, and ImageNet100 need to be downloaded, and the path ne
 <br>
 apply_wd argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix.
 
-### Extracted PyTorch Code for Label Smoothing++
+### Data
+- To change the dataset, **replace cifar10** with the **appropriate dataset**. <br>
+- Cifar10, Cifar100, FashionMNIST, and SVHN will be auto-downloaded to the path specified in the "data_path" argument (default: "./data").
+- TinyImageNet, Animals10n, and Imagenet100 need to be downloaded.
+   - Data must be split into 'train' and 'test' folders. 
+   - Path needs to be provided using the "data_path" argument.
+- Dataset links:
+   - TinyImageNet: <a href="http://cs231n.stanford.edu/tiny-imagenet-200.zip">http://cs231n.stanford.edu/tiny-imagenet-200.zip</a> 
+   - Animals10N: <a href="https://dm.kaist.ac.kr/datasets/animal-10n/">https://dm.kaist.ac.kr/datasets/animal-10n/</a>  
+   - ImageNet100: <a href="https://www.kaggle.com/datasets/ambityga/imagenet100">https://www.kaggle.com/datasets/ambityga/imagenet100/</a>  
+
+#### Simple PyTorch Code for Label Smoothing++
 Alternatively, simple PyTorch code for integrating with other frameworks:
 ```
 # Define LS++ Class
@@ -77,7 +93,8 @@ loss_fn = LSPP(K, α)
 opt = SGD(list(net.parameters()) + list(loss_fn.parameters()), lr, mom, wd)
 ```
 
-
-If you find this paper/code helpful, please cite our upcoming paper:
+## Cite
+If you found our work/code helpful, please cite our paper:
 ```
+Bibtex upcoming
 ```
