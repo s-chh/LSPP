@@ -74,7 +74,7 @@ python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path
 ```
 
 ### Integration to new tasks
-Alternatively, simple PyTorch code for quick integration with new frameworks:
+PyTorch code for quick integration with new frameworks:
 ```
 from lspp import LSPP
 
