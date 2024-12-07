@@ -16,7 +16,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 ## Introduction
 ### Overview
 - Label smoothing++ is a label regularization technique that learns optimal training targets.
-- Our approach learns a C-Matrix.
+- Training targets are learned using a C Matrix.
 	- For a classification task with **K** classes, each class learns a **K-1** dimensional probability vector for non-target classes.
 	- These probability vectors are **combined to form the C-Matrix (K x K)** by setting the target class (itself) probability to 0 on the diagonal.
 - Probability vectors from the C matrix are combined with a one-hot vector to create the final training target.
