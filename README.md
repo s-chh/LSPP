@@ -20,7 +20,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 	- For a classification task with **K** classes, each class learns a **K-1** dimensional probability vector for non-target classes.
 	- These probability vectors are **combined to form the C-Matrix (K x K)** by setting the target class (itself) probability to 0 on the diagonal.
 - Probability vectors from the C matrix are combined with a one-hot vector to create the final training target.
-- The target class probability is fixed but the non-target class probabilities are flexible.
+	- The target class probability is fixed but the non-target class probabilities are flexible.
 - Key benefits:
     - Encourages more flexible learning.
     - Improves network robustness and accuracy.
