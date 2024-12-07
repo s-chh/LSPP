@@ -29,7 +29,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 1. **Initialize the C-Matrix** with different learnable probability vectors for each class.
 2. For each sample, create its **1-hot vector** of the target class.
 3. Use the **C-Matrix** to fetch the corresponding **probability vector** for non-target classes.
-4. **Combine** the 1-hot vector and the C-Matrix vector using a **weighted sum** controlled by a **hyperparameter** 𝛼 α.
+4. **Combine** the 1-hot vector and the C-Matrix vector using a **weighted sum** controlled by a **hyperparameter** α.
 5. Optimize the network parameters with **cross-entropy loss**.
 6. Train the C-Matrix with the **reverse cross-entropy loss**.
 7. Repeat steps 2–6 until convergence.
