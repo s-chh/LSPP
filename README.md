@@ -3,7 +3,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 
 ## Table of Contents
 - [Introduction](#introduction)
-  - [Overview](#overview)
+  - [Overview](#c-matrix)
   - [Algorithm](#algorithm)
 - [Usage](#usage)
   - [Requirements](#requirements)
@@ -14,9 +14,12 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 - [Cite](#cite)
 
 ## Introduction
-### Overview
-- Label Smoothing++ (LS++) enhances label regularization by learning optimal probability assignments for non-target classes.
-- Instead of using fixed probabilities like traditional label smoothing, LS++ learns a C-Matrix where each class has a unique probability vector for non-target classes.
+Label smoothing++ is a label regularization technique that enhances label regularization by learning optimal probability. Instead of using fixed probabilities like traditional label smoothing, LS++ learns a C-Matrix where each class has a unique probability vector for non-target classes.
+
+### C Matrix
+- For a **K** class classification task, each class learns a unique **K-1** probability vector for non-target classes.
+- These vectors are combined to form a C matrix (**K x K**) by adding the target class (itself) probability of 0.
+- Probability vectors from the C matrix are combined with a one-hot vector to create the final training target.
 - The target class probability is fixed but the non-target class probabilities are flexible.
 - Key benefits:
     - Encourages more flexible learning.
@@ -41,7 +44,7 @@ To train a model using Label Smoothing++ (LS++), use **lspp** as the **method** 
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
 
-The `--apply_wd` argument controls whether weight decay should be applied to the C-Matrix. Not applying provides a sharper C-Matrix but the performance can drop.
+The `--apply_wd` argument controls whether weight decay should be applied to the C-Matrix. Setting this to `False` results in a sharper C-Matrix but may reduce performance due to overfitting.
 
 ### Data
 - To change the dataset, **replace CIFAR10** with the appropriate dataset. <br>
