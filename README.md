@@ -9,7 +9,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
   - [Requirements](#requirements)
   - [Run Commands](#run-commands)
   - [Data](#data)
-- [Using Label Smoothing++ with new tasks](#using-label-smoothing++-with-new-tasks)
+- [Using Label Smoothing++ with new tasks](#using-label-smoothing-with-new-tasks)
 - [Results](#results)
 - [Cite](#cite)
 
