@@ -9,16 +9,16 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
   - [Requirements](#requirements)
   - [Run Commands](#run-commands)
   - [Data](#data)
-  - [PyTorch Code for Label Smoothing++][#quick-pytorch-code-for-label-smoothing++]
+  - [Integration to new tasks][#integration-to-new-tasks]
 - [Results](#results)
 - [Cite](#cite)
 
 ## Introduction
 ### Overview
 - Label smoothing++ is a label regularization technique that learns optimal training targets.
-- Learns a C-Matrix where each class has a unique probability vector for non-target classes.
-	- For a **K** class classification task, each class learns a unique **K-1** probability vector for non-target classes.
-	- These vectors are combined to form a C matrix (**K x K**) by adding the target class (itself) probability of 0.
+- Our approach learns a C-Matrix.
+	- For a classification task with **K** classes, each class learns a **K-1** dimensional probability vector for non-target classes.
+	- These probability vectors are **combined to form the C-Matrix (K x K)** by setting the target class (itself) probability to 0 on the diagonal.
 - Probability vectors from the C matrix are combined with a one-hot vector to create the final training target.
 - The target class probability is fixed but the non-target class probabilities are flexible.
 - Key benefits:
@@ -73,8 +73,8 @@ For manually downloaded datasets, use the `--data_path` argument to specify the 
 python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path /path/to/data
 ```
 
-### Quick PyTorch Code for Label Smoothing++
-Alternatively, simple PyTorch code for quick integration with other frameworks:
+### Integration to new tasks
+Alternatively, simple PyTorch code for quick integration with new frameworks:
 ```
 from lspp import LSPP
 
