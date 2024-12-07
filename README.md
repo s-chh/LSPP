@@ -79,14 +79,17 @@ Alternatively, simple PyTorch code for quick integration with other frameworks:
 from lspp import LSPP
 
 # Define loss function
-loss_fn = LSPP(K, α)
+loss_fn = LSPP(num_classes, alpha=0.1).cuda()
 
 # Add C-Matrix to the training parameters of the optimizer
-opt = SGD(list(net.parameters()) + list(loss_fn.parameters()), lr, mom, wd)
+opt = SGD(list(model.parameters()) + list(loss_fn.parameters()), lr, mom, wd)
 .
 .
 # Calculate loss
 loss = loss_fn(logits, targets)
+opt.zero_grad()
+loss.backward()
+opt.step()
 ```
 
 ## Cite
