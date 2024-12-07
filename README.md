@@ -9,7 +9,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
   - [Requirements](#requirements)
   - [Run Commands](#run-commands)
   - [Data](#data)
-  - [Integration to new tasks](#integration-to-new-tasks)
+  - [Using with new tasks](#using-with-new-tasks)
 - [Results](#results)
 - [Cite](#cite)
 
@@ -73,7 +73,7 @@ For manually downloaded datasets, use the `--data_path` argument to specify the 
 python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path /path/to/data
 ```
 
-### Integration to new tasks
+### Using with new tasks
 PyTorch code for quick integration with new frameworks:
 ```
 from lspp import LSPP
