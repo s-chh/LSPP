@@ -76,37 +76,7 @@ python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path
 ### Quick PyTorch Code for Label Smoothing++
 Alternatively, simple PyTorch code for quick integration with other frameworks:
 ```
-# Define LS++ Class
-class LSPP(nn.Module):
-	def __init__(self, K, alpha=0.1):
-		super().__init__()
-		self.K = K
-		self.alpha = alpha
-		self.c_matrix = nn.Parameter(torch.zeros(K, K-1), requires_grad=True)
-
-	def forward(self, logits, y):
-		pred = F.softmax(logits, 1)
-
-		y_1hot = F.one_hot(y, num_classes=self.K).float()
-
-		# Convert logits of c_matrix to probs
-		c_matrix = F.softmax(self.c_matrix, 1)        # K, K-1
-
-		# Add 0 at y indices to get the C-Matrix of size K x K
-		c_matrix = c_matrix.reshape(-1, self.K)       # K, K-1   -> K-1, K       
-		c_matrix = F.pad(c_matrix, (1, 0, 0, 0))      # K-1, K   -> K-1, K+1     
-		c_matrix = c_matrix.reshape(-1)               # K-1, K+1 -> K^2 - 1
-		c_matrix = F.pad(c_matrix, (0, 1))            # K^2 - 1  ->  K^2        
-		c_matrix = c_matrix.reshape(self.K, self.K)   # K^2      ->  K, K
-
-		# Compute Targets
-		y_tgt = (1 - self.alpha) * y_1hot + self.alpha * c_matrix[y]
-
-		# Symmetric cross-entropy loss with detach
-		fwd_ce = cross_entropy_loss(y_tgt, pred.detach())
-		bck_ce = cross_entropy_loss(pred, y_tgt.detach())
-		loss = (fwd_ce + bck_ce) / 2
-		return loss
+from lspp import LSPP
 
 # Define loss function
 loss_fn = LSPP(K, α)
