@@ -34,6 +34,8 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 6. Train the C-Matrix with the **reverse cross-entropy loss**.
 7. Repeat steps 2–6 until convergence.
 
+The PyTorch code for Label Smoothing++ loss is available in <a href="lspp.py">lspp.py</a> and showcases these steps.
+
 ## Usage
 ### Requirements
 Python, scikit-learn, PyTorch, and torchvision
