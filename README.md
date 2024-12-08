@@ -9,8 +9,9 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
   - [Requirements](#requirements)
   - [Run Commands](#run-commands)
   - [Data](#data)
-- [Using Label Smoothing++ with new tasks](#using-label-smoothing-with-new-tasks)
 - [Results](#results)
+  - [Learned C-Matrices](#learned-c-matrices)
+- [Using Label Smoothing++ with new tasks](#using-label-smoothing-with-new-tasks)
 - [Cite](#cite)
 
 ## Introduction
@@ -60,6 +61,22 @@ The `--apply_wd` argument controls whether weight decay should be applied to the
 python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path /path/to/data
 ```
 
+## Results
+### Qualitative Results
+
+### Learned C-Matrices
+
+| CIFAR10  | FashionMNIST    | Animals-10N    |
+|-------------|-------------|-------------|
+| <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="100%"></img> | <img src="./figures/c_animals.jpg" width="100%"></img>|
+
+- Showcases that each class favors non-target classes similar to the target class for probability assignment.
+- E.g. in the CIFAR10 dataset, while assigning the probability for class _Dog_.
+	- The network exhibits a preference for classes like _Cat_, and _Horse_ which are semantically closer
+ 	- The least weightage is for the non-animal classes like _Ship_, and _Truck_.
+  	- Other classes and the datasets show the same trend.
+- C-Matrix for the CIFAR100 dataset is available <a href="./figures/c_cifar100.jpg">here.</a> 
+
 ## Using Label Smoothing++ with new tasks
 PyTorch code for quick integration with new frameworks:
 ```
@@ -78,22 +95,6 @@ opt.zero_grad()
 loss.backward()
 opt.step()
 ```
-
-## Results
-### Qualitative Results
-
-### Learned C-Matrices
-
-| CIFAR10  | FashionMNIST    | Animals-10N    |
-|-------------|-------------|-------------|
-| <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="100%"></img> | <img src="./figures/c_animals.jpg" width="100%"></img>|
-
-- Showcases that each class favors non-target classes similar to the target class for probability assignment.
-- E.g. in the CIFAR10 dataset, while assigning the probability for class _Dog_.
-	- The network exhibits a preference for classes like _Cat_, and _Horse_ which are semantically closer
- 	- The least weightage is for the non-animal classes like _Ship_, and _Truck_.
-  	- Other classes and the datasets show the same trend.
-- C-Matrix for the CIFAR100 dataset is available <a href="./figures/c_cifar100.jpg">here.</a> 
 
 ## Cite
 If you found our work/code helpful, please cite our paper:
