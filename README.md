@@ -83,7 +83,12 @@ opt.step()
 ### Qualitative Results
 
 ### Learned C Matrices
-The learned C Matrices below showcase that each class favors non-target classes similar to the target class for probability assignment.
+
+| CIFAR10  | FashionMNIST    | Animals-10N    |
+|-------------|-------------|-------------|
+| <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="100%"></img> | <img src="./figures/c_animals.jpg" width="100%"></img>|
+
+The learned C Matrices below showcase that each class favors non-target classes similar to the target class for probability assignment. For e.g., in the CIFAR10 dataset, while assigning the probability for class _Dog_, the network exhibits a preference for classes like _Cat_, and _Horse_ which are semantically closer and least to the non-animal classes like _Ship_, and _Truck_. C Matrix for the CIFAR100 dataset is also available <a href="./figures/c_cifar100.jpg">here.</a> 
 
 ## Cite
 If you found our work/code helpful, please cite our paper:
