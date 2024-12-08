@@ -82,8 +82,8 @@ opt.step()
 ## Results
 ### Qualitative Results
 
-### Learned C Matrix
-C Matrix learns the optimal probability assignment of the non-target classes. Below we show some learned examples that showcase each class favours similar classes for probability assignment.
+### Learned C Matrices
+The learned C Matrices below showcase that each class favors non-target classes similar to the target class for probability assignment.
 
 ## Cite
 If you found our work/code helpful, please cite our paper:
