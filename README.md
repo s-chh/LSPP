@@ -47,7 +47,7 @@ To train a model using Label Smoothing++ (LS++), use **lspp** as the **method** 
 python main.py --dataset cifar10 --model alexnet --method lspp
 ```
 
-The `--apply_wd` argument controls whether weight decay should be applied to the C-Matrix. Setting this to `False` results in a sharper C-Matrix but may reduce performance due to overfitting.
+The `--apply_wd` argument controls whether weight decay should be applied to the C-Matrix (Default: True). Setting this to `False` provides a sharper C-Matrix but may reduce performance due to overfitting.
 
 ### Data
 - To change the dataset, **replace CIFAR10** with the appropriate dataset. <br>
