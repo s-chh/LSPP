@@ -71,9 +71,9 @@ python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path
 | <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="100%"></img> | <img src="./figures/c_animals.jpg" width="100%"></img>|
 
 - Showcases that each class favors non-target classes similar to the target class for probability assignment.
-- E.g. in the CIFAR10 dataset, while assigning the probability for class _Dog_.
-	- The network exhibits a preference for the class _Cat_ followed by _Horse_, Deer, etc. which are semantically closer.
- 	- The least weightage is for the non-animal classes like _Ship_, and _Truck_.
+- E.g. In the CIFAR10 dataset, while assigning the probabilities for class _Dog_.
+	- The network favors the _Cat_ class, followed by _Horse_, _Deer_, etc because of their similarities.
+ 	- The last preference is for the non-animal classes like _Ship_, and _Truck_.
   	- Other classes and the datasets show the same trend.
 - C-Matrix for the CIFAR100 dataset is available <a href="./figures/c_cifar100.jpg">here.</a> 
 
