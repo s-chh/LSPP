@@ -16,10 +16,10 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 ## Introduction
 ### Overview
 - Label smoothing++ is a label regularization technique that learns optimal training targets.
-- Training targets are learned using a C Matrix.
+- Training targets are learned using a C-Matrix.
  	- In a classification task with **𝐾** classes, each class learns a **K−1** dimensional probability vector for non-target classes
 	- These probability vectors are **combined to form the C-Matrix (K x K)** by setting the target class (itself) probability to 0 on the diagonal.
-- Probability vectors from the C matrix are combined with a one-hot vector to create the final training target.
+- Probability vectors from the C-matrix are combined with a one-hot vector to create the final training target.
 	- The target class probability is fixed but the non-target class probabilities are flexible.
 - Key benefits:
     - Encourages more flexible learning.
@@ -82,7 +82,7 @@ opt.step()
 ## Results
 ### Qualitative Results
 
-### Learned C Matrices
+### Learned C-Matrices
 
 | CIFAR10  | FashionMNIST    | Animals-10N    |
 |-------------|-------------|-------------|
@@ -93,7 +93,7 @@ opt.step()
 	- The network exhibits a preference for classes like _Cat_, and _Horse_ which are semantically closer
  	- The least weightage is for the non-animal classes like _Ship_, and _Truck_.
   	- Other classes and the datasets show the same trend.
-- C Matrix for the CIFAR100 dataset is available <a href="./figures/c_cifar100.jpg">here.</a> 
+- C-Matrix for the CIFAR100 dataset is available <a href="./figures/c_cifar100.jpg">here.</a> 
 
 ## Cite
 If you found our work/code helpful, please cite our paper:
