@@ -24,7 +24,7 @@ class LSPP(nn.Module):
 		c_matrix = F.softmax(self.c_matrix, 1)               # K, K-1
 
 		# Add 0 at y indices to get K X K C-Matrix
-		c_matrix = c_matrix.reshape(-1, self.K)            	 # K, K-1    ->  K-1, K       
+		c_matrix = c_matrix.reshape(-1, self.K)              # K, K-1    ->  K-1, K       
 		c_matrix = F.pad(c_matrix, (1, 0, 0, 0))             # K-1, K    ->  K-1, K+1     Pad with 0 after K values starting at index 0
 		c_matrix = c_matrix.reshape(-1)                      # K-1, K+1  ->  K^2 - 1
 		c_matrix = F.pad(c_matrix, (0, 1))                   # K^2 - 1   ->  K^2          Add 0 at the end
