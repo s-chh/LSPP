@@ -28,7 +28,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 
 <img src="/figures/model.jpg" width="90%"></img>
 
-### Algorithm (Steps denoted in the above figure.)
+### Algorithm
 1. **Initialize the C-Matrix** with different learnable probability vectors for each class.
 2. For each sample, create its **1-hot vector** of the target class.
 3. Use the **C-Matrix** to fetch the corresponding **probability vector** for non-target classes.
@@ -37,7 +37,7 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
 6. Train the C-Matrix with the **reverse cross-entropy loss**.
 7. Repeat steps 2–6 until convergence.
 
-The PyTorch code for Label Smoothing++ loss is available in <a href="lspp.py">lspp.py</a> and showcases these steps.
+These steps are showcased in the above figure and for the PyTorch code of Label Smoothing++ loss refer to <a href="lspp.py">lspp.py</a>.
 
 ## Usage
 ### Requirements
