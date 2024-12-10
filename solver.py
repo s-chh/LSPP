@@ -36,7 +36,7 @@ class Solver(object):
 			optimizer = torch.optim.SGD(trainable_params, lr=self.args.lr, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
 		else:
 			trainable_params = [{'params': self.net.parameters(),     'weight_decay': self.args.weight_decay},
-								{'params': self.loss_fn.parameters(), 'weight_decay': 0}]
+					    {'params': self.loss_fn.parameters(), 'weight_decay': 0}]
 			optimizer = torch.optim.SGD(trainable_params, lr=self.args.lr, momentum=self.args.momentum)
 		
 		# scheduler for linear warmup of lr and then step decay
