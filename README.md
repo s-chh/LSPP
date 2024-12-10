@@ -26,7 +26,9 @@ Official Implementation of paper "Label Smoothing++: Enhanced Label Regularizati
     - Encourages more flexible learning.
     - Improves network robustness and accuracy.
 
-### Algorithm
+<img src="/figures/model.jpg" width="90%"></img>
+
+### Algorithm (Steps denoted in the above figure.)
 1. **Initialize the C-Matrix** with different learnable probability vectors for each class.
 2. For each sample, create its **1-hot vector** of the target class.
 3. Use the **C-Matrix** to fetch the corresponding **probability vector** for non-target classes.
