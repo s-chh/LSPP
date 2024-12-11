@@ -1,5 +1,5 @@
 # Label Smoothing++ or LS++
-Official Implementation of paper "Label Smoothing++: Enhanced Label Regularization for Training Neural Networks". <br>
+Official Implementation of paper [Label Smoothing++: Enhanced Label Regularization for Training Neural Networks](https://bmvc2024.org/proceedings/392/). <br>
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -101,5 +101,12 @@ opt.step()
 ## Cite
 If you found our work/code helpful, please cite our paper:
 ```
-Bibtex upcoming
+@inproceedings{Chhabra_2024_BMVC,
+author    = {Sachin Chhabra and Hemanth Venkateswara and Baoxin Li},
+title     = {Label Smoothing++: Enhanced Label Regularization for Training Neural Networks},
+booktitle = {35th British Machine Vision Conference 2024, {BMVC} 2024, Glasgow, UK, November 25-28, 2024},
+publisher = {BMVA},
+year      = {2024},
+url       = {https://papers.bmvc2024.org/0392.pdf}
+}
 ```
