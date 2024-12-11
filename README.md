@@ -70,7 +70,7 @@ python main.py --method lspp --model resnet18 --dataset tinyimagenet --data_path
 
 | CIFAR10  | FashionMNIST    | Animals-10N    |
 |-------------|-------------|-------------|
-| <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="100%"></img> | <img src="./figures/c_animals.jpg" width="100%"></img>|
+| <img src="./figures/c_cifar10.jpg" width="100%"></img> | <img src="./figures/c_fmnist.jpg" width="91%"></img> | <img src="./figures/c_animals.jpg" width="98%"></img>|
 
 - Showcases that each class favors non-target classes similar to the target class for probability assignment.
 - E.g. In the **CIFAR10** dataset, while assigning the probabilities for class **Dog**.
