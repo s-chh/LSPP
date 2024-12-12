@@ -7,8 +7,8 @@ def cross_entropy_loss(y_hat, y_target):
 	function to compute cross-entropy loss.
 
 	Inputs:
-		y_hat    (tensor): predicted probabilites of shape B, K
-		y_target (tensor): target probabilites of shape B, K
+		y_hat    (tensor): predicted probabilities of shape B, K
+		y_target (tensor): target probabilities of shape B, K
 	
 	Returns:
 		Tensor: loss value
@@ -22,13 +22,13 @@ def cross_entropy_loss(y_hat, y_target):
 class LSPP(nn.Module):
 	"""
 	Class for Label Smoothing++.
-	It learns a C-Matrix that allows network to select its optimal targets. 
-	The final target is weighted combination of learned C-Matrix and the one-hot vector. 
-	The weight is a hyperparameter alpha and generally set to 0.1.
+	It learns a C-Matrix that allowsthe  network to select its optimal targets. 
+	The final target is a weighted combination of the learned C-Matrix and the one-hot vector. 
+	The weight is a hyperparameter alpha and is generally set to 0.1.
 
 	Parameters:
-		K       (int) : Number of classes
-		alpha (float) : Alpha hyperparamaeter (default:0.1)
+		K       (int): Number of classes
+		alpha (float): Alpha hyperparameter (default:0.1)
 
 	Inputs:
 		x (tensor): logits of shape B, K and targets of size B
@@ -64,7 +64,7 @@ class LSPP(nn.Module):
 		c_matrix = F.softmax(self.c_matrix, 1)               # K, K-1
 
 		# Add 0 at y indices to get K X K C-Matrix
-		c_matrix = self.add_zero_at_y(c_matrix)				 # K, K
+		c_matrix = self.add_zero_at_y(c_matrix)		     # K, K
 
 		# Compute Targets
 		y_tgt = (1 - self.alpha) * y_1hot + self.alpha * c_matrix[y]
