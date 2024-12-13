@@ -18,7 +18,7 @@ class Solver(object):
 		if self.args.image_size < 224:																									
 			self.net = getattr(models_small, self.args.model)(n_classes=self.args.n_classes, n_channels=self.args.n_channels).cuda()	
 		else:
-			self.net = getattr(models_big,   self.args.model)(pretrained=self.args.pretrained, n_classes=self.args.n_classes).cuda()	
+			self.net = getattr(models_big,   self.args.model)(n_classes=self.args.n_classes).cuda()	
 
 		# Training loss function
 		if self.args.method == 'lspp':																									
